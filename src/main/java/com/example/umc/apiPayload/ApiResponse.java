@@ -12,7 +12,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @JsonPropertyOrder({"isSuccess","code","message","result"})
 public class ApiResponse<T> {
-    @JsonProperty
+    @JsonProperty("isSuccess")
     private final Boolean isSuccess;
     private final String code;
     private final String message;
@@ -28,6 +28,6 @@ public class ApiResponse<T> {
     }
 
     public static <T> ApiResponse<T> onFailure(String code, String message, T data){
-        return new ApiResponse<>(true,code,message,data);
+        return new ApiResponse<>(false,code,message,data);
     }
 }
