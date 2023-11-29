@@ -1,7 +1,7 @@
-package com.example.umc.apiPayload.validation.validator;
+package com.example.umc.validation.validator;
 
 import com.example.umc.apiPayload.code.status.ErrorStatus;
-import com.example.umc.apiPayload.validation.annotation.ExistStore;
+import com.example.umc.validation.annotation.ExistStore;
 import com.example.umc.repository.StoreRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

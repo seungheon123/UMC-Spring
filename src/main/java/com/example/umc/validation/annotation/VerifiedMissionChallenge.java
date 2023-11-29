@@ -1,7 +1,6 @@
-package com.example.umc.apiPayload.validation.annotation;
+package com.example.umc.validation.annotation;
 
-import com.example.umc.apiPayload.validation.validator.MissionChallengeVerifiedValidator;
-import com.example.umc.apiPayload.validation.validator.StoreExistValidator;
+import com.example.umc.validation.validator.MissionChallengeVerifiedValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

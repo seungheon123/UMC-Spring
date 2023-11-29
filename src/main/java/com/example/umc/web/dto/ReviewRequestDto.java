@@ -1,13 +1,12 @@
 package com.example.umc.web.dto;
 
-import com.example.umc.apiPayload.validation.annotation.ExistMember;
-import com.example.umc.apiPayload.validation.annotation.ExistStore;
+import com.example.umc.validation.annotation.ExistMember;
+import com.example.umc.validation.annotation.ExistStore;
 import lombok.Getter;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 public class ReviewRequestDto {
 

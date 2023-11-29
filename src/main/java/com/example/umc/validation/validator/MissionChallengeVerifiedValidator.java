@@ -1,11 +1,9 @@
-package com.example.umc.apiPayload.validation.validator;
+package com.example.umc.validation.validator;
 
-import com.example.umc.apiPayload.code.status.ErrorStatus;
-import com.example.umc.apiPayload.validation.annotation.VerifiedMissionChallenge;
+import com.example.umc.validation.annotation.VerifiedMissionChallenge;
 import com.example.umc.domain.enums.MissionStatus;
 import com.example.umc.domain.mapping.MemberMission;
 import com.example.umc.repository.MemberMissionRepository;
-import com.example.umc.repository.MissionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,6 @@
 package com.example.umc.web.dto;
 
-import com.example.umc.apiPayload.validation.annotation.ExistRegions;
-import lombok.Builder;
+import com.example.umc.validation.annotation.ExistRegions;
 import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
