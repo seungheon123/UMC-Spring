@@ -4,6 +4,9 @@ import com.example.umc.domain.common.BaseEntity;
 import com.example.umc.domain.mapping.Review;
 import com.example.umc.domain.mapping.StoreType;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,6 +14,8 @@ import java.util.List;
 
 @Entity
 @Getter
+@DynamicInsert
+@DynamicUpdate
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -26,6 +31,7 @@ public class Store extends BaseEntity {
     @Column(nullable = false)
     private String address;
 
+    @ColumnDefault("0")
     private int reviews;
 
     @Column(columnDefinition = "decimal(2,1) default 5.0")
@@ -39,5 +45,9 @@ public class Store extends BaseEntity {
 
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
     private List<StoreType> storeTypeList = new ArrayList<>();
+
+    @OneToOne
+    @JoinColumn(name = "region_id")
+    private Region region;
 
 }
