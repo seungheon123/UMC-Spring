@@ -4,10 +4,7 @@ import com.example.umc.domain.Member;
 import com.example.umc.domain.Mission;
 import com.example.umc.domain.common.BaseEntity;
 import com.example.umc.domain.enums.MissionStatus;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -16,6 +13,7 @@ import javax.persistence.*;
 @Table(name = "member_mission")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@Builder
 public class MemberMission extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
