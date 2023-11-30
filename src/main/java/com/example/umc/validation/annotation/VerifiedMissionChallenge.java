@@ -14,4 +14,5 @@ public @interface VerifiedMissionChallenge {
     String message() default "해당 미션은 이미 도전 중입니다";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
+
 }

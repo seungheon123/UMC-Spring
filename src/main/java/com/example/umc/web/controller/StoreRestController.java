@@ -3,7 +3,7 @@ package com.example.umc.web.controller;
 import com.example.umc.apiPayload.ApiResponse;
 import com.example.umc.converter.StoreConverter;
 import com.example.umc.domain.Store;
-import com.example.umc.service.ShopService.StoreCommandService;
+import com.example.umc.service.StoreService.StoreCommandService;
 import com.example.umc.web.dto.StoreRequestDto;
 import com.example.umc.web.dto.StoreResponseDto;
 import lombok.RequiredArgsConstructor;

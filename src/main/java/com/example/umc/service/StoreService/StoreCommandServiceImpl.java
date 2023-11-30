@@ -1,6 +1,5 @@
-package com.example.umc.service.ShopService;
+package com.example.umc.service.StoreService;
 
-import com.example.umc.apiPayload.code.BaseErrorCode;
 import com.example.umc.apiPayload.code.status.ErrorStatus;
 import com.example.umc.apiPayload.exception.handler.RegionHandler;
 import com.example.umc.converter.StoreConverter;
@@ -12,8 +11,6 @@ import com.example.umc.web.dto.StoreRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

@@ -22,10 +22,10 @@ public class MemberMissionCommandServiceImpl implements MemberMissionCommandServ
     private final MemberRepository memberRepository;
     private final MissionRepository missionRepository;
     @Override
-    public MemberMission registerMemberMission(MemberMissionRequestDto.MemberMissionRegisterDto request) {
-        Member member = memberRepository.findById(request.getMemberId())
+    public MemberMission registerMemberMission(Long memberId, Long missionId) {
+        Member member = memberRepository.findById(memberId)
                 .orElseThrow(()->new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
-        Mission mission = missionRepository.findById(request.getMissionId())
+        Mission mission = missionRepository.findById(missionId)
                 .orElseThrow(()->new MissionHandler(ErrorStatus.MISSION_NOT_FOUND));
         MemberMission memberMission = MemberMissionConverter.toMemberMission(member, mission);
         return memberMissionRepository.save(memberMission);
