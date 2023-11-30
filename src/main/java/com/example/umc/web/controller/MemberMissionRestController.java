@@ -5,6 +5,7 @@ import com.example.umc.converter.MemberMissionConverter;
 import com.example.umc.domain.mapping.MemberMission;
 import com.example.umc.service.MemberMission.MemberMissionCommandService;
 import com.example.umc.validation.annotation.ExistMember;
+import com.example.umc.validation.annotation.ExistMission;
 import com.example.umc.validation.annotation.VerifiedMissionChallenge;
 import com.example.umc.web.dto.MemberMissionRequestDto;
 import com.example.umc.web.dto.MemberMissionResponseDto;
@@ -28,7 +29,7 @@ public class MemberMissionRestController {
     @PostMapping("/member/{memberId}/mission/{missionId}")
     public ApiResponse<MemberMissionResponseDto.MemberMissionResultDto> register(
             @ExistMember @RequestParam("memberId") Long memberId,
-            @VerifiedMissionChallenge @RequestParam("missionId") Long missionId
+            @ExistMission @RequestParam("missionId") Long missionId
     ){
         MemberMission memberMission = memberMissionCommandService.registerMemberMission(memberId, missionId);
         return ApiResponse.onSuccess(MemberMissionConverter.toMemberMissionResultDto(memberMission));
