@@ -5,4 +5,5 @@ import com.example.umc.web.dto.MissionRequestDto;
 
 public interface MissionCommandService {
     Mission registerMission(MissionRequestDto.MissionRegisterDto request, Long StoreId);
+    Boolean existMission(Long missionId);
 }

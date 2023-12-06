@@ -13,11 +13,13 @@ import com.example.umc.repository.StoreRepository;
 import com.example.umc.web.dto.ReviewRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class ReviewCommandServiceImpl implements ReviewCommandService {
 
     private final ReviewRepository reviewRepository;
@@ -25,6 +27,7 @@ public class ReviewCommandServiceImpl implements ReviewCommandService {
     private final MemberRepository memberRepository;
 
     @Override
+    @Transactional
     public Review registerReview(ReviewRequestDto.ReviewRegisterDto request) {
 
         Member member = memberRepository.findById(request.getMemberId())

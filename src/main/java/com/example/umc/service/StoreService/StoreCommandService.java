@@ -5,4 +5,5 @@ import com.example.umc.web.dto.StoreRequestDto;
 
 public interface StoreCommandService {
     Store registerStore(StoreRequestDto.StoreRegisterDto request);
+    Boolean existStore(Long storeId);
 }

@@ -27,4 +27,11 @@ public class StoreCommandServiceImpl implements StoreCommandService {
         Store newStore = StoreConverter.toStore(request,region);
         return storeRepository.save(newStore);
     }
+
+    @Override
+    public Boolean existStore(Long storeId){
+        return storeRepository.existsById(storeId);
+    }
+
+
 }
