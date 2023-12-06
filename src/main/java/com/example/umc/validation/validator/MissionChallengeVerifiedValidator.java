@@ -1,6 +1,7 @@
 package com.example.umc.validation.validator;
 
 import com.example.umc.apiPayload.code.status.ErrorStatus;
+import com.example.umc.service.MemberMissionService.MemberMissionCommandService;
 import com.example.umc.validation.annotation.VerifiedMissionChallenge;
 import com.example.umc.domain.enums.MissionStatus;
 import com.example.umc.domain.mapping.MemberMission;
@@ -17,7 +18,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class MissionChallengeVerifiedValidator implements ConstraintValidator<VerifiedMissionChallenge, Long> {
 
-    private final MemberMissionRepository memberMissionRepository;
+    private final MemberMissionCommandService memberMissionCommandService;
     //private final MissionRepository missionRepository;
 
     @Override
@@ -28,15 +29,10 @@ public class MissionChallengeVerifiedValidator implements ConstraintValidator<Ve
     @Override
     public boolean isValid(Long value, ConstraintValidatorContext context) {
 
-        boolean isValid = true;
-        Optional<MemberMission> memberMission = memberMissionRepository.findById(value);
-        if (memberMission.isPresent()) {
-            MemberMission exist = memberMission.get();
-            if (exist.getMissionStatus() == MissionStatus.CHALLENGING){
-                context.disableDefaultConstraintViolation();
-                context.buildConstraintViolationWithTemplate(ErrorStatus.MISSION_STATE_CHALLENGE.toString()).addConstraintViolation();
-                isValid = false;
-            }
+        boolean isValid = memberMissionCommandService.checkIfChallenging(value);
+        if(!isValid){
+            context.disableDefaultConstraintViolation();
+            context.buildConstraintViolationWithTemplate(ErrorStatus.MISSION_STATE_CHALLENGE.toString()).addConstraintViolation();
         }
         return isValid;
     }
