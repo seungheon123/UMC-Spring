@@ -13,6 +13,8 @@ import com.example.umc.repository.MemberMissionRepository;
 import com.example.umc.repository.MemberRepository;
 import com.example.umc.repository.MissionRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,6 +47,20 @@ public class MemberMissionCommandServiceImpl implements MemberMissionCommandServ
     public Boolean checkIfChallenging(Long id) {
         Optional<MemberMission> memberMission = memberMissionRepository.findById(id);
         return memberMission.isEmpty() || memberMission.get().getMissionStatus() != MissionStatus.CHALLENGING;
+    }
+
+    @Override
+    public Page<MemberMission> getMemberMissionList(Long memberId, Integer page) {
+        Member member = memberRepository.findById(memberId).get();
+        return memberMissionRepository.findAllByMemberAndMissionStatus(member,MissionStatus.CHALLENGING, PageRequest.of(page,10));
+    }
+
+    @Override
+    @Transactional
+    public MemberMission updateMemberMissionStatus(Long memberMissionId) {
+        MemberMission memberMission = memberMissionRepository.findById(memberMissionId).get();
+        memberMission.setMissionStatus(MissionStatus.COMPLETE);
+        return memberMission;
     }
 
 
